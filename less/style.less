@@ -1,0 +1,143 @@
+@primary-color: #003b6f;
+@secondary-color: #33a0ff;
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: @primary-color;
+	color: white;
+}
+.container {
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+#sideBar {
+	flex: 1 0 20%;
+	border: 3px lighten(@primary-color, 10%);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	h1 {
+		justify-self: flex-start;
+	}
+	#mini-profile {
+		justify-self: flex-end;
+	}
+}
+
+.convolist {
+	box-sizing: border-box;
+	flex: 3 0 80%;
+	justify-self: flex-start;
+	width: 90%;
+	margin: 0 auto;
+	list-style-type: none;
+	flex-basis: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	> li {
+		padding: 0.5rem 1rem;
+	}
+	& > li:nth-child(1) {
+		font-weight: 800;
+		border-bottom: 2px solid black;
+		text-align: center;
+	}
+	& > li:nth-child(odd) {
+		background-color: lighten(@primary-color, 5%);
+	}
+}
+
+.profile {
+	background-color: @primary-color;
+}
+.logout {
+	padding: 5px 10px;
+}
+#main-area {
+	flex: 3 0 60%;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	border: 3px lighten(@primary-color, 5%);
+	display: flex;
+	flex-direction: column;
+}
+.messages {
+	justify-self: flex-start;
+	flex: 3 0 80%;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 4px 8px;
+	margin: 0 auto;
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	> h1 {
+		text-align: center;
+	}
+	> div {
+		overflow-y: auto;
+	}
+}
+.message {
+	position: relative;
+	text-align: start;
+	padding: 0.2rem 0.4rem;
+	border: 0px 1px 1px 1px solid @secondary-color;
+	&:nth-child(even) {
+		background-color: lighten(@primary-color, 10%);
+	}
+	&:nth-child(odd) {
+		background-color: lighten(@primary-color, 5%);
+	}
+	.userName {
+		font-size: 0.8rem;
+		font-weight: 400;
+		margin-bottom: 0.2rem;
+	}
+	.message-content {
+		margin-left: 2rem;
+	}
+	.datetime {
+		position: absolute;
+		font-size: 0.5rem;
+		top: 2px;
+		right: 2px;
+	}
+}
+
+.message-textarea {
+	position: relative;
+	textarea {
+		box-sizing: border-box;
+
+		padding: 8px;
+		background-color: lighten(@primary-color, 10%);
+		color: white;
+		width: 100%;
+		height: 3rem;
+	}
+	button {
+		background-color: @secondary-color;
+		color: @primary-color;
+		border-radius: 50%;
+		position: absolute;
+		width: 1rem;
+		height: 1rem;
+		bottom: 8px;
+		right: 8px;
+		font-weight: 800;
+	}
+}

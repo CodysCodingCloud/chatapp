@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #003b6f;
+  color: white;
+}
+.container {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+#sideBar {
+  flex: 1 0 20%;
+  border: 3px #0056a2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#sideBar h1 {
+  justify-self: flex-start;
+}
+#sideBar #mini-profile {
+  justify-self: flex-end;
+}
+.convolist {
+  box-sizing: border-box;
+  flex: 3 0 80%;
+  justify-self: flex-start;
+  width: 90%;
+  margin: 0 auto;
+  list-style-type: none;
+  flex-basis: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.convolist > li {
+  padding: 0.5rem 1rem;
+}
+.convolist > li:nth-child(1) {
+  font-weight: 800;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+.convolist > li:nth-child(odd) {
+  background-color: #004989;
+}
+.profile {
+  background-color: #003b6f;
+}
+.logout {
+  padding: 5px 10px;
+}
+#main-area {
+  flex: 3 0 60%;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: 3px #004989;
+  display: flex;
+  flex-direction: column;
+}
+.messages {
+  justify-self: flex-start;
+  flex: 3 0 80%;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4px 8px;
+  margin: 0 auto;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.messages > h1 {
+  text-align: center;
+}
+.messages > div {
+  overflow-y: auto;
+}
+.message {
+  position: relative;
+  text-align: start;
+  padding: 0.2rem 0.4rem;
+  border: 0px 1px 1px 1px solid #33a0ff;
+}
+.message:nth-child(even) {
+  background-color: #0056a2;
+}
+.message:nth-child(odd) {
+  background-color: #004989;
+}
+.message .userName {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.message .message-content {
+  margin-left: 2rem;
+}
+.message .datetime {
+  position: absolute;
+  font-size: 0.5rem;
+  top: 2px;
+  right: 2px;
+}
+.message-textarea {
+  position: relative;
+}
+.message-textarea textarea {
+  box-sizing: border-box;
+  padding: 8px;
+  background-color: #0056a2;
+  color: white;
+  width: 100%;
+  height: 3rem;
+}
+.message-textarea button {
+  background-color: #33a0ff;
+  color: #003b6f;
+  border-radius: 50%;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  bottom: 8px;
+  right: 8px;
+  font-weight: 800;
+}
