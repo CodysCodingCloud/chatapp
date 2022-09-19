@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { _login, attemptPasswordLogin } from "../store/authSlice";
 import { useDispatch } from "react-redux";
+import { CONVOLIST } from "../store/messageSlice";
+
+let dispatch;
 export default function Login() {
 	const [formData, setFormData] = useState({
 		email: "",
@@ -13,13 +16,14 @@ export default function Login() {
 		let value = event.target.value;
 		setFormData({ ...formData, [name]: value });
 	}
-	const dispatch = useDispatch();
+	dispatch = useDispatch();
 	function onSubmit(ev) {
 		ev.preventDefault();
 		try {
 			console.log("comp", formData);
 
 			dispatch(attemptPasswordLogin(formData));
+			// dispatch(CONVOLIST(useSelector((state) => state.auth.conversations)));
 		} catch (err) {
 			setError(err);
 		}
@@ -49,3 +53,4 @@ export default function Login() {
 		</form>
 	);
 }
+export { dispatch };

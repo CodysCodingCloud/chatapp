@@ -7,7 +7,6 @@ export default function Messages() {
 	const bottomRef = useRef(null);
 
 	useEffect(() => {
-		console.log(bottomRef);
 		bottomRef.current?.scrollIntoView({ behavior: "auto" });
 	}, [messages]);
 	return (
@@ -23,7 +22,7 @@ export default function Messages() {
 					</div>
 				</>
 			) : (
-				<h1>there are no messages to display</h1>
+				<h1>Welcome to ChatAPP</h1>
 			)}
 		</div>
 	);

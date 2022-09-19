@@ -43,6 +43,8 @@
 		"react-router-dom": "^6.3.0",
 		"redux": "^4.2.0",
 		"save-dev": "^0.0.1-security",
-		"sequelize": "^6.21.6"
+		"sequelize": "^6.21.6",
+		"socket.io": "^4.5.2",
+		"socket.io-client": "^4.5.2"
 	}
 }

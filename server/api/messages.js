@@ -17,7 +17,10 @@ router.get("/", async function (req, res, next) {
 router.post("/", async (req, res, next) => {
 	try {
 		const newMessage = await Message.create(req.body);
-		res.send(newMessage);
+		const messageObj = await Message.findByPk(newMessage.id, {
+			include: User,
+		});
+		res.send(messageObj);
 	} catch (error) {
 		next(error);
 	}

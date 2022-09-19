@@ -1,15 +1,21 @@
-const http = require("http").createServer();
-
-const io = require("socket.io")(http, {
-	cors: { origin: "*" },
-});
-
-io.on("connection", (socket) => {
-	console.log("a user connected");
-	socket.on("message", (message) => {
-		console.log(message);
-		io.emit("message", `${socket.id.substr(0, 2)} said ${message}`);
+module.exports = function (io) {
+	io.on("connection", (socket) => {
+		console.log("a user connected");
+		socket.on("message", (message) => {
+			console.log(message);
+		});
+		socket.on("convomsg", (messageObj) => {
+			socket.emit("message", "msg sent");
+			socket.broadcast
+				.to(messageObj.conversationId)
+				.emit("convomsg", messageObj);
+		});
+		socket.on("joinRooms", (rooms) => {
+			rooms.map((room) => {
+				socket.join(room.id);
+			});
+		});
 	});
-});
-
-http.listen(8080, () => console.log("listening on http://localhost:8080"));
+	// io.broadcast
+	io.on("disconnect", () => console.log("byew", socket.id));
+};

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import socket from "../socketclient";
 const axios = require("axios");
 const authSlice = createSlice({
 	name: "auth",
@@ -6,10 +7,13 @@ const authSlice = createSlice({
 	reducers: {
 		_login: (state, action) => {
 			console.log("running");
+			socket.emit("message", `${action.payload.email} logged in`);
+			socket.emit("joinRooms", action.payload.conversations);
 			state = action.payload;
 			return state;
 		},
 		_LOGOUT: (state) => {
+			socket.emit("message", `${state.email} logged out`);
 			window.localStorage.removeItem("token");
 			state = {};
 			return {};
@@ -35,7 +39,6 @@ export const attemptPasswordLogin = (loginInfo) => async (dispatch) => {
 	const response = await axios.post("/api/auth/login", loginInfo);
 	const { token } = response.data;
 	window.localStorage.setItem("token", token);
-	console.log("alice", token);
 	attemptTokenLogin()(dispatch);
 };
 export const _logout = () => async (dispatch) => {
